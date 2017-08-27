@@ -1,0 +1,74 @@
+body {
+  background-color: #04d631;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);/*fit-content(300px) fit-content(300px) 1fr;*/
+  grid-gap: 10px;
+  box-sizing: border-box;
+  padding: 15px;
+}
+
+.container {
+  /*background-color: white;
+  display: flex;  or inline-flex */
+  display: grid;
+  grid-template-columns: fit-content(300px) fit-content(300px) 1fr;
+  grid-gap: 10px;
+  box-sizing: border-box;
+  height: 350px;
+  width: 60%;
+  padding: 15px;
+}
+
+img {
+  margin: auto;
+}
+// voglio implementarla come dialog box
+//https://jqueryui.com/dialog/
+
+#welcome {
+  border: 3px, solid, black;
+  border-radius: 10px;
+  background-color: #8b9e8f;
+  padding: 16px;
+  /*max-width: 800px;
+  height: 1000px
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  bottom: 30%;
+  margin-top: -50px;
+  margin-left: -50px;*/
+  position: fixed;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);/*fit-content(300px) fit-content(300px) 1fr;*/
+  grid-gap: 10px;
+  box-sizing: border-box;
+  height: 350px;
+  width: 60%;
+  padding: 15px;
+
+}
+.button {
+  border: 3px, solid, black;
+  border-radius: 10px;
+  background-color: #d66e6d;
+  /*margin: auto;
+  padding: 16px;
+  width: auto;
+  display: inline-block;
+  position: fixed;
+  left: 45%;
+  bottom: 20%;
+  margin-top: -50px;
+  margin-left: -50px;*/
+  display: grid;
+  grid-template-columns: fit-content(300px) fit-content(300px) 1fr;
+  grid-gap: 10px;
+  box-sizing: border-box;
+  /*height: 50px;*/
+  width: 60%;
+  padding: 15px;
+}
+p {
+  justify-content: center;
+}
