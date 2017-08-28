@@ -44,7 +44,11 @@ $(document).ready(function(){
     //devo attaccarci la parte grafica
     let startGame = function() {
       humanCard();
-      dealerCard();
+      let x = drawCard();
+      dealer.cards.push(x);
+      //let d = cards[x];
+      let a = "<img src='deck/back.png'>"
+      $('#dealer').append(a);
       humanCard();
       dealerCard();
       console.log(human.cards);
