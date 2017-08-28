@@ -26,10 +26,10 @@ $(document).ready(function(){
     let humanCard = function() {
       let x = drawCard();
       human.cards.push(x);
-      let d = cards[x];
-      let a = "<img src='deck/" + d + ".svg'>"
-      /*$('#welcome').show("fade", 2000);*/
-      $('#player').append(a);
+      let newFileName = cards[x];
+      let newTag = "<img id=\"" + newFileName + "\" src='deck/" + newFileName + ".svg'>";
+      $('#player').append(newTag);
+      $(newFileName).effect("slide", 500)
     }
 
     let dealerCard = function(){
@@ -92,6 +92,7 @@ $(document).ready(function(){
         }
       console.log(points);
       }
+      return points;
     }
 
     // Checks if there is a blackjack with the 2 initial cards
@@ -118,13 +119,27 @@ $(document).ready(function(){
 
     //isBlackJack deve fermare il gioco, far vedere chi ha vinto e chiedere per una nuova partita
     isBlackJack();
-    $('#hit').click(function() {
-      humanCard();
-      checkHandValue(human);
-    })
-    $('#stand').click(function() {
+    let humanPoint = checkHandValue(human);
 
-    })
-    checkHandValue(human);
+      $('#hit').click(function() {
+          humanCard();
+          humanPoint = checkHandValue(human);
+          if (humanPoint>21) {
+            console.log("You lost!");
+            location.href = "";
+          }
+      })
+      $('#stand').click(function() {
+        while (checkHandValue(dealer)<16){
+          dealerCard()
+        }
+        let dealerPoint = checkHandValue(dealer);
+        if (dealerPoint > humanPoint && dealerPoint <= 21){
+          console.log("dealer wins")
+        }
+        else if (dealerPoint > 21) {
+          console.log("Dealer busts!");
+        }
+      })
   })
 })
