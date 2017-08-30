@@ -47,7 +47,7 @@ $(document).ready(function(){
       let x = drawCard();
       dealer.cards.push(x);
       //let d = cards[x];
-      let a = "<img src='deck/back.png'>"
+      let a = "<img id='back' src='deck/back.png'>"
       $('#dealer').append(a);
       humanCard();
       dealerCard();
@@ -124,6 +124,8 @@ $(document).ready(function(){
     //isBlackJack deve fermare il gioco, far vedere chi ha vinto e chiedere per una nuova partita
     isBlackJack();
     let humanPoint = checkHandValue(human);
+    let paragraph = "<h1>My points: "  + humanPoint + "</h1>";
+    $('#myPoints').append(paragraph);
 
       $('#hit').click(function() {
           humanCard();
@@ -134,6 +136,10 @@ $(document).ready(function(){
           }
       })
       $('#stand').click(function() {
+        $('#back').effect("fold", 500);
+        let d = dealer.cards[0];
+        let a = "<img id='back' src='deck/" + cards[d] + ".svg'>"
+        $('#dealer').prepend(a);
         while (checkHandValue(dealer)<16){
           dealerCard()
         }
