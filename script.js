@@ -1,6 +1,6 @@
 $(document).ready(function(){
   $('#welcome_button').click(function() {
-    $( "#welcome" ).hide( "drop", { direction: "down" }, "slow" );
+    $( ".modal-intro" ).hide( "drop", { direction: "down" }, "slow" );
 
     //The deck
     let cards = ["AC","AD","AH","AS","2C","2D","2H","2S","3C","3D","3H",
@@ -107,49 +107,103 @@ $(document).ready(function(){
         let a = dealer.cards;
         console.log(a);
         console.log("dealer wins");
-      }
+        $('#out').prepend("<h1>DEALER'S BLACKJACK - YOU LOST!</h1>");
+        $('.modal-out').css("display", "block");
+        $('#out-message').css("display", "block");
+        $('#play-again').click(function() {
+          location.href = "";
+      })
+    }
       else if (dealer.cards[1]<4 && dealer.cards[0] > 35) {
         console.log("dealer wins");
-      }
+        $('#out').prepend("<h1>DEALER'S BLACKJACK - YOU LOST!</h1>");
+        $('.modal-out').css("display", "block");
+        $('#out-message').css("display", "block");
+        $('#play-again').click(function() {
+          location.href = "";
+      })
+    }
       else if (human.cards[0]<4 && human.cards[1] > 35) {
         console.log("You win!");
-      }
+        $('#out').prepend("<h1>YOUR BLACKJACK - YOU WIN!</h1>");
+        $('.modal-out').css("display", "block");
+        $('#out-message').css("display", "block");
+        $('#play-again').click(function() {
+          location.href = "";
+      })
+    }
       else if (human.cards[1]<4 && human.cards[0] > 35) {
         console.log("You win!");
-      }
+        $('#out').prepend("<h1>YOUR BLACKJACK - YOU WIN!</h1>");
+        $('.modal-out').css("display", "block");
+        $('#out-message').css("display", "block");
+        $('#play-again').click(function() {
+          location.href = "";
+      })
     }
-
+}
     startGame();
 
     //isBlackJack deve fermare il gioco, far vedere chi ha vinto e chiedere per una nuova partita
     isBlackJack();
     let humanPoint = checkHandValue(human);
-    let paragraph = "<h1>My points: "  + humanPoint + "</h1>";
+    let paragraph = "<h1>My points: <span id='number'>"  + humanPoint + "</span></h1>";
     $('#myPoints').append(paragraph);
 
       $('#hit').click(function() {
           humanCard();
           humanPoint = checkHandValue(human);
+          $('#number').empty();
+          $('#number').append(humanPoint);
           if (humanPoint>21) {
+            $('#out').prepend("<h1>You Lost!</h1>");
+            $('.modal-out').css("display", "block");
+            $('#out-message').css("display", "block");
             console.log("You lost!");
-            location.href = "";
-          }
+            $('#play-again').click(function() {
+              location.href = "";
+          })
+        }
       })
+
+      // il dealer ha l'asso che vale solo undici punti
       $('#stand').click(function() {
         $('#back').effect("fold", 500);
         let d = dealer.cards[0];
         let a = "<img id='back' src='deck/" + cards[d] + ".svg'>"
         $('#dealer').prepend(a);
-        while (checkHandValue(dealer)<16){
-          dealerCard()
+        while (checkHandValue(dealer)<=16){
+          dealerCard();
         }
         let dealerPoint = checkHandValue(dealer);
         if (dealerPoint > humanPoint && dealerPoint <= 21){
-          console.log("dealer wins")
-        }
+          $('#out').prepend("<h1>Dealer wins! You Lost!</h1>");
+          $('.modal-out').css("display", "block");
+          $('#out-message').css("display", "block");
+          $('#play-again').click(function() {
+            location.href = "";
+          console.log("dealer wins");
+        })
+      }
         else if (dealerPoint > 21) {
+          $('#out').prepend("<h1>DEALER BUSTS!</h1>");
+          $('.modal-out').css("display", "block");
+          $('#out-message').css("display", "block");
           console.log("Dealer busts!");
+          $('#play-again').click(function() {
+            location.href = "";
+          })
         }
-      })
-  })
+        else {
+          $('#out').prepend("<h1>EVEN!</h1>");
+          $('.modal-out').css("display", "block");
+          $('#out-message').css("display", "block");
+          console.log("EVEN!");
+          $('#play-again').click(function() {
+            location.href = "";
+        })
+      }
+    })
 })
+
+})/* Ready jquery function closing brackets */

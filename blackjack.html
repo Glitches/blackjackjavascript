@@ -6,30 +6,44 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <script src="script.js"></script>
 </head>
 <body>
-  <div id="welcome">
-    <h1>Welcome in my simple Blackjack game!</h1>
-    <h2> Your name: </h2>
-    <input id="myName" type="text">
-    <br />
-    <br />
-    <button id="welcome_button">
-      <p>Let's Play!</p>
-    </button>
+  <div class="modal-intro">
+  <div id="modal-welcome">
+    <div id="welcome">
+      <h1>Welcome in my simple Blackjack game!</h1>
+      <h2> Your name: </h2>
+      <input id="myName" type="text">
+      <br />
+      <br />
+      <button id="welcome_button">
+        <p>Let's Play!</p>
+      </button>
     </div>
-    <div class="wrapper">
-      <div id="myPoints">
-      </div>
-      <div class="container" id="dealer">
-      </div>
-      <div class="container" id="player">
-      </div>
-      <div class= "choices">
-        <button id="hit">HIT</button>
-        <button id="stand">STAND</button>
+  </div>
+    </div>
+  <div class="modal-out">
+    <div id="out-message">
+      <div id="out">
+        <button id="play-again">WANNA PLAY AGAIN?</button>
       </div>
     </div>
+
+  </div>
+  <div class="wrapper">
+    <div class="container" id="dealer"></div>
+    <div class="container" id="player"></div>
+    <div class= "choices">
+      <button id="hit">HIT</button>
+      <br />
+      <br />
+      <button id="stand">STAND</button>
+      <br />
+      <div id="myPoints"></div>
+    </div>
+  </div>
+
 </body>
 </html>

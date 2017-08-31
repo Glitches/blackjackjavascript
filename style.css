@@ -1,97 +1,145 @@
+* {
+  font-family: roboto, sans-serif;
+}
 body {
   background-color: #04d631;
-  display: grid;
-  grid-template-rows: repeat(2, 1fr);/*fit-content(300px) fit-content(300px) 1fr;*/
-  grid-gap: 10px;
-  box-sizing: content-box;
-  padding: 15px;
+  /*display: grid;*/
+  /*grid-template-rows: repeat(2, 1fr); fit-content(300px) fit-content(300px) 1fr;*/
+  /*grid-gap: 0px;*/
+  /*box-sizing: content-box;*/
 }
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(10, 1fr);
   grid-gap: 10px;
   grid-auto-rows: minmax(100px, auto);
 }
 .choices {
-  grid-column: 6;
-  grid-row: 2;
+  grid-column: 10;
+  grid-row: 1;
 }
+
 #myPoints {
-  grid-column: 1;
-  grid-row: 2;
+  grid-column: 10;
+  grid-row: 1;
 }
+
 .container {
-  /*background-color: white;
-  display: flex;  or inline-flex */
-  /*display: grid;
-  grid-template-columns: fit-content(900px) fit-content(900px) 1fr;
-  grid-gap: 10px;*/
-  box-sizing: border-box;
+  box-sizing: content-box;
   height: 300px;
   width: 100%;
   padding: 15px;
 }
+
 #dealer {
-  grid-column: 2/5;
-  grid-row: 1/5
+  grid-column: 2/9;
+  grid-row: auto;
 }
 
 #player {
-  grid-column: 2/5;
-  grid-row: 3/5
+  grid-column: 2/9;
+  grid-row: auto;
 }
 
 img {
   margin: auto;
   max-width: 150px;
   max-height: 200px;
-  padding-left: 10px;
+  padding-left: 5px;
 }
-// voglio implementarla come dialog box
-//https://jqueryui.com/dialog/
+
+.modal-intro{
+  display: block;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-out{
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+#modal-welcome {
+  display: block;
+  position: fixed;
+  background-color: #8b9e8f;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+  overflow: auto;
+  padding: 15px;
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+#out-message {
+  display: none;
+  position: fixed;
+  background-color: #8b9e8f;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+  overflow: auto;
+  padding: 15px;
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+}
+
+
+#out {
+  border: 3px, solid, black;
+  border-radius: 10px;
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
 
 #welcome {
   border: 3px, solid, black;
   border-radius: 10px;
-  background-color: #8b9e8f;
-  padding: 16px;
-  /*max-width: 800px;
-  height: 1000px
-  position: absolute;
-  top: 40%;
-  left: 30%;
-  bottom: 30%;
-  margin-top: -50px;
-  margin-left: -50px;*/
-  position: fixed;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);/*fit-content(300px) fit-content(300px) 1fr;*/
-  grid-gap: 10px;
-  box-sizing: border-box;
-  height: 350px;
-  width: 60%;
-  padding: 15px;
-
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
 }
+
 #welcome_button {
   border: 3px, solid, black;
   border-radius: 10px;
   background-color: #d66e6d;
-  /*margin: auto;
-  padding: 16px;
-  width: auto;
-  display: inline-block;
-  position: fixed;
-  left: 45%;
-  bottom: 20%;
-  margin-top: -50px;
-  margin-left: -50px;*/
-  display: grid;
+  /*display: grid;
   grid-template-columns: fit-content(300px) fit-content(300px) 1fr;
   grid-gap: 10px;
   box-sizing: border-box;
-  /*height: 50px;*/
-  width: 40%;
+  height: 50px;*/
+  width: 80%;
   padding: 15px;
 }
 
@@ -101,7 +149,8 @@ p {
 
 #hit, #stand {
   border: 3px, solid, black;
-  border-radius: 100%;
+  border-radius: 10px;
   background-color: #d66e6d;
   padding: 40px;
+  width: 150px;
 }
