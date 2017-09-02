@@ -1,45 +1,64 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Simple BalckJack</title>
+  <!-- here are linked stylesheets and scripts needed:
+    1 my stylesheet
+    2 jQuery library
+    3 jQuery UI library
+    4 jQuery UI stylesheet
+    5 roboto font stylesheet
+    6 my JS script
+  -->
   <link href="style.css" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <script src="script.js"></script>
 </head>
+
 <body>
-  <div class="modal-intro">
-  <div id="modal-welcome">
-    <div id="welcome">
-      <h1>Welcome in my simple Blackjack game!</h1>
-      <h2> Your name: </h2>
-      <input id="myName" type="text">
-      <br />
-      <br />
-      <button id="welcome_button">
-        <p>Let's Play!</p>
-      </button>
+
+  <!-- This div contains the modal dialog box at start -->
+  <div class="modal-background" id="intro">
+    <div id="modal-welcome">
+      <div id="welcome">
+        <h1>Welcome to my simple Blackjack game!</h1>
+        <h2> Your name: </h2>
+        <input id="myName" type="text">
+        <br />
+        <br />
+        <button id="welcome_button">
+          <p>LET'S PLAY!</p>
+        </button>
+      </div>
     </div>
   </div>
-    </div>
-  <div class="modal-out">
+
+  <!-- This div is for the modal box at the end of the game -->
+  <div class="modal-background" id="out">
     <div id="out-message">
-      <div id="out">
+      <div id="out-m">
         <button id="play-again">WANNA PLAY AGAIN?</button>
       </div>
     </div>
-
   </div>
+
+  <!-- This div contains the elements during the game uses display: grid -->
   <div class="wrapper">
+    <!-- dealer's card row -->
     <div class="container" id="dealer"></div>
+    <!-- player's card row -->
     <div class="container" id="player"></div>
+    <!-- button and points block on the right -->
     <div class= "choices">
       <button id="hit">HIT</button>
       <br />
       <br />
       <button id="stand">STAND</button>
+      <br />
       <br />
       <div id="myPoints"></div>
     </div>

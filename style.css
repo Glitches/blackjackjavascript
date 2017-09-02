@@ -1,34 +1,62 @@
+/* First style for standard html elements*/
 * {
   font-family: roboto, sans-serif;
 }
+
 body {
-  background-color: #04d631;
+  background: linear-gradient(to bottom right, #1c930a, #6ec124); /*#04d631;*/
   /*display: grid;*/
   /*grid-template-rows: repeat(2, 1fr); fit-content(300px) fit-content(300px) 1fr;*/
   /*grid-gap: 0px;*/
   /*box-sizing: content-box;*/
 }
+
+p {
+  justify-content: center;
+}
+
+input {
+  font-size: 20px;
+  border-radius: 10px;
+  box-shadow: 10px 10px 5px #888888;
+  width: 30%;
+  height: 50px;
+}
+
+button {
+  border: 3px, solid, black;
+  border-radius: 10px;
+  background: linear-gradient(#d39a1f, #e2c688);
+  padding: 15px;
+  box-shadow: 10px 10px 5px #888888;
+  font-weight: bold;
+}
+
+img {
+  margin: auto;
+  max-width: 150px;
+  max-height: 200px;
+  padding-left: 5px;
+}
+
+/* class wrapper sets the parent div in a grid 10x2 */
 .wrapper {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-gap: 10px;
   grid-auto-rows: minmax(100px, auto);
 }
+
+/* grid column and grid row help placing elements in the proper position */
 .choices {
   grid-column: 10;
-  grid-row: 1;
+  grid-row: 2;
+  padding-right: 20px;
 }
 
 #myPoints {
   grid-column: 10;
-  grid-row: 1;
-}
-
-.container {
-  box-sizing: content-box;
-  height: 300px;
-  width: 100%;
-  padding: 15px;
+  grid-row: 2
 }
 
 #dealer {
@@ -41,14 +69,15 @@ body {
   grid-row: auto;
 }
 
-img {
-  margin: auto;
-  max-width: 150px;
-  max-height: 200px;
-  padding-left: 5px;
+.container {
+  box-sizing: content-box;
+  height: 300px;
+  width: 100%;
+  padding: 15px;
 }
 
-.modal-intro{
+/* this 3 selectors style up the modal-box's background */
+.modal-background {
   display: block;
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -57,25 +86,19 @@ img {
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
+}
+
+#intro {
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-.modal-out{
+#out{
   display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgba(0,0,0,0.2); /* Black w/ opacity */
 }
 
+/* from now on styling up the modal boxes */
 #modal-welcome {
   display: block;
   position: fixed;
@@ -86,7 +109,6 @@ img {
   left: 0;
   top: 0;
   box-sizing: border-box;
-  overflow: auto;
   padding: 15px;
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -102,15 +124,14 @@ img {
   left: 0;
   top: 0;
   box-sizing: border-box;
-  overflow: auto;
   padding: 15px;
   background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgba(0,0,0,0.2); /* Black w/ opacity */
 
 }
 
-
-#out {
+#out-m {
+  text-align: center;
   border: 3px, solid, black;
   border-radius: 10px;
   background-color: #fefefe;
@@ -121,36 +142,20 @@ img {
 }
 
 #welcome {
+  text-align: center;
   border: 3px, solid, black;
   border-radius: 10px;
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
-  border: 1px solid #888;
   width: 80%;
 }
 
 #welcome_button {
-  border: 3px, solid, black;
-  border-radius: 10px;
-  background-color: #d66e6d;
-  /*display: grid;
-  grid-template-columns: fit-content(300px) fit-content(300px) 1fr;
-  grid-gap: 10px;
-  box-sizing: border-box;
-  height: 50px;*/
   width: 80%;
-  padding: 15px;
 }
 
-p {
-  justify-content: center;
-}
-
+/* game buttons specific style */
 #hit, #stand {
-  border: 3px, solid, black;
-  border-radius: 10px;
-  background-color: #d66e6d;
-  padding: 40px;
   width: 150px;
 }

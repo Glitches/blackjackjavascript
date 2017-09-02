@@ -1,6 +1,6 @@
 $(document).ready(function(){
   $('#welcome_button').click(function() {
-    $( ".modal-intro" ).hide( "drop", { direction: "down" }, "slow" );
+    $( "#intro" ).hide( "drop", { direction: "down" }, "slow" );
 
     //The deck
     let cards = ["AC","AD","AH","AS","2C","2D","2H","2S","3C","3D","3H",
@@ -10,19 +10,21 @@ $(document).ready(function(){
 
     let cardsDrawn = [];
 
-    //Instantiate the two players
+    //Create two players: cards is an array that stores the position of the cards on the cards array
     let human = {
       name: name,
       cards: [],
       currentPoints: 0
-    }
+    };
 
     let dealer = {
       name: "dealer",
       cards: [],
       currentPoints: 0
-    }
+    };
 
+    /* humanCard and dealerCard call drawcard function and display the card on video
+      they push a new number card into the player's array and use jQuery to append to the right div */
     let humanCard = function() {
       let x = drawCard();
       human.cards.push(x);
@@ -30,7 +32,7 @@ $(document).ready(function(){
       let newTag = "<img id=\"" + newFileName + "\" src='deck/" + newFileName + ".svg'>";
       $('#player').append(newTag);
       $(newFileName).effect("slide", 500)
-    }
+    };
 
     let dealerCard = function(){
       let x = drawCard();
@@ -38,7 +40,7 @@ $(document).ready(function(){
       let d = cards[x];
       let a = "<img src='deck/" + d + ".svg'>"
       $('#dealer').append(a);
-    }
+    };
 
     // draws 4 cards, two for each player
     //devo attaccarci la parte grafica
@@ -52,7 +54,7 @@ $(document).ready(function(){
       humanCard();
       dealerCard();
       console.log(human.cards);
-    }
+    };
 
     // This function takes a random number 0-1 (0-51 num poosition) and checks if it's already been used
     //We use 52 because floor works in this interval [0,1) 1 excluded
@@ -60,26 +62,26 @@ $(document).ready(function(){
     let drawCard = function() {
       //It's
       let num = Math.floor(52 * Math.random());
-      for(let i=0; i<cardsDrawn.lenght; i++){
+      for(let i=0; i<cardsDrawn.length; i++){
         if (num === cardsDrawn[i]) {return drawCard()};
       }
       cardsDrawn.push(num);
-      //console.log(cardsDrawn);
+      console.log(cardsDrawn);
       return num;
-    }
+    };
 
-    // Given a number, returns its value in points
-    let checkHandValue = function(player) {
+
+    /*let checkHandValue = function(player) {
       let aceIsTen = 0;
       let points = 0;
       console.log(player.cards)
       for (let i=0; i<player.cards.length; i++) {
         // checks if there another ace valued 11 and evaluates if ace is 1 or 11 points
-        if (player.cards[i]<4 && aceIsTen===0 && player.currentPoints<11) {
+        if (player.cards[i]<4 && player.currentPoints<=11) { //&& aceIsTen===0
           points +=11;
           aceIsTen = 1;
         }
-        else if (player.cards[i]<4 && player.currentPoints>= 11) {
+        else if (player.cards[i]<4 && player.currentPoints >= 11) {
           points +=1;
         }
         else if (player.currentPoints>=11 && aceIsTen === 1 ) {
@@ -91,119 +93,177 @@ $(document).ready(function(){
           points += 10;
         }
         else {
-            let value = Math.floor(player.cards[i]/4) + 1;
-            points += value;
+          let value = Math.floor(player.cards[i]/4) + 1;
+          points += value;
         }
-      console.log(points);
+        console.log(player.currentPoints);
+        console.log(points);
       }
       return points;
-    }
+    }*/
 
-    // Checks if there is a blackjack with the 2 initial cards
-    // Takes the player or pc object after the first round and return true or false
+    // Given the card numbers array, returns its value in blackjack points
+    let checkHandValue = function(player) {
+      let aceIsTen = 0;
+      let points = 0;
+      console.log(player.cards)
+      for (let i=0; i<player.cards.length; i++) {
+        // checks if there another ace valued 11 and evaluates if ace is 1 or 11 points
+        if (player.cards[i]<4 && aceIsTen == 0 && points<=10) { //
+          points +=11;
+          aceIsTen = 1;
+        }
+        else if (player.cards[i]<4 && points >= 11) {
+          points +=1;
+        }
+        else if (points>11 && aceIsTen === 1 ) {
+          // i.e cards ranging from 32 to 35 are 9, 35/4 rounded is 8, so +1 is needed
+          //let value = ;
+          points += (Math.floor(player.cards[i]/4) - 9);
+        }
+        else if (player.cards[i]>35) {points += 10;}
+        else {points += (Math.floor(player.cards[i]/4) + 1);}
+        //console.log(player.currentPoints);
+        console.log(points);
+      }
+      return points;
+    };
+
+    /*Checks if there is a blackjack with the 2 initial cards;
+     Takes the player or pc object after the first round and return true or false;
+     call the ending modal box and tells what's appening */
     let isBlackJack = function() {
-    // The dealer wins no matter what
+      // The dealer wins no matter what
       if(dealer.cards[0]<4 && dealer.cards[1] > 35) {
         let a = dealer.cards;
         console.log(a);
         console.log("dealer wins");
-        $('#out').prepend("<h1>DEALER'S BLACKJACK - YOU LOST!</h1>");
-        $('.modal-out').css("display", "block");
+        $('#back').effect("fold", 500);
+        let d = dealer.cards[0];
+        //let a = "<img id='back' src='deck/" + cards[d] + ".svg'>";
+        $('#dealer').prepend("<img id='back' src='deck/" + cards[d] + ".svg'>");
+        $('#out-m').prepend("<h1>DEALER'S BLACKJACK - YOU LOST!</h1>");
+        $('#out').css("display", "block");
         $('#out-message').css("display", "block");
         $('#play-again').click(function() {
           location.href = "";
-      })
-    }
+        })
+      }
       else if (dealer.cards[1]<4 && dealer.cards[0] > 35) {
         console.log("dealer wins");
-        $('#out').prepend("<h1>DEALER'S BLACKJACK - YOU LOST!</h1>");
-        $('.modal-out').css("display", "block");
+        $('#back').effect("fold", 500);
+        let d = dealer.cards[0];
+        $('#dealer').prepend("<img id='back' src='deck/" + cards[d] + ".svg'>");
+        $('#out-m').prepend("<h1>DEALER'S BLACKJACK - YOU LOST!</h1>");
+        $('#out').css("display", "block");
         $('#out-message').css("display", "block");
         $('#play-again').click(function() {
           location.href = "";
-      })
-    }
+        })
+      }
       else if (human.cards[0]<4 && human.cards[1] > 35) {
         console.log("You win!");
-        $('#out').prepend("<h1>YOUR BLACKJACK - YOU WIN!</h1>");
-        $('.modal-out').css("display", "block");
+        $('#back').effect("fold", 500);
+        let d = dealer.cards[0];
+        //let a = "<img id='back' src='deck/" + cards[d] + ".svg'>";
+        $('#dealer').prepend("<img id='back' src='deck/" + cards[d] + ".svg'>");
+        $('#out-m').prepend("<h1>YOUR BLACKJACK - YOU WIN!</h1>");
+        $('#out').css("display", "block");
         $('#out-message').css("display", "block");
         $('#play-again').click(function() {
           location.href = "";
-      })
-    }
+        })
+      }
       else if (human.cards[1]<4 && human.cards[0] > 35) {
         console.log("You win!");
-        $('#out').prepend("<h1>YOUR BLACKJACK - YOU WIN!</h1>");
-        $('.modal-out').css("display", "block");
+        $('#back').effect("fold", 500);
+        let d = dealer.cards[0];
+        //let a = "<img id='back' src='deck/" + cards[d] + ".svg'>";
+        $('#dealer').prepend("<img id='back' src='deck/" + cards[d] + ".svg'>");
+        $('#out-m').prepend("<h1>YOUR BLACKJACK - YOU WIN!</h1>");
+        $('#out').css("display", "block");
         $('#out-message').css("display", "block");
         $('#play-again').click(function() {
           location.href = "";
-      })
+        })
+      }
     }
-}
-    startGame();
 
-    //isBlackJack deve fermare il gioco, far vedere chi ha vinto e chiedere per una nuova partita
+    /* From now on, the game starts:
+      set the page;
+      checks blackjack;
+      counts points;
+      waits for player to click hit or stand;
+      finally compares dealer and player cards and declare the winner with the
+      out modal box */
+    startGame();
     isBlackJack();
     let humanPoint = checkHandValue(human);
     let paragraph = "<h1>My points: <span id='number'>"  + humanPoint + "</span></h1>";
     $('#myPoints').append(paragraph);
 
-      $('#hit').click(function() {
-          humanCard();
-          humanPoint = checkHandValue(human);
-          $('#number').empty();
-          $('#number').append(humanPoint);
-          if (humanPoint>21) {
-            $('#out').prepend("<h1>You Lost!</h1>");
-            $('.modal-out').css("display", "block");
-            $('#out-message').css("display", "block");
-            console.log("You lost!");
-            $('#play-again').click(function() {
-              location.href = "";
-          })
-        }
-      })
-
-      // il dealer ha l'asso che vale solo undici punti
-      $('#stand').click(function() {
-        $('#back').effect("fold", 500);
-        let d = dealer.cards[0];
-        let a = "<img id='back' src='deck/" + cards[d] + ".svg'>"
-        $('#dealer').prepend(a);
-        while (checkHandValue(dealer)<=16){
-          dealerCard();
-        }
-        let dealerPoint = checkHandValue(dealer);
-        if (dealerPoint > humanPoint && dealerPoint <= 21){
-          $('#out').prepend("<h1>Dealer wins! You Lost!</h1>");
-          $('.modal-out').css("display", "block");
-          $('#out-message').css("display", "block");
-          $('#play-again').click(function() {
-            location.href = "";
-          console.log("dealer wins");
-        })
-      }
-        else if (dealerPoint > 21) {
-          $('#out').prepend("<h1>DEALER BUSTS!</h1>");
-          $('.modal-out').css("display", "block");
-          $('#out-message').css("display", "block");
-          console.log("Dealer busts!");
-          $('#play-again').click(function() {
-            location.href = "";
-          })
-        }
-        else {
-          $('#out').prepend("<h1>EVEN!</h1>");
-          $('.modal-out').css("display", "block");
-          $('#out-message').css("display", "block");
-          console.log("EVEN!");
-          $('#play-again').click(function() {
-            location.href = "";
+    $('#hit').click(function() {
+      humanCard();
+      humanPoint = checkHandValue(human);
+      $('#number').empty();
+      $('#number').append(humanPoint);
+      if (humanPoint>21) {
+        $('#out-m').prepend("<h1>You Lost!</h1>");
+        $('#out').css("display", "block");
+        $('#out-message').css("display", "block");
+        console.log("You lost!");
+        $('#play-again').click(function() {
+          location.href = "";
         })
       }
     })
-})
+
+    $('#stand').click(function() {
+      $('#back').effect("fold", 500);
+      let d = dealer.cards[0];
+      let a = "<img id='back' src='deck/" + cards[d] + ".svg'>"
+      $('#dealer').prepend(a);
+      while (checkHandValue(dealer)<=16){
+        dealerCard();
+      }
+      let dealerPoint = checkHandValue(dealer);
+      if (dealerPoint > humanPoint && dealerPoint <= 21){
+        $('#out-m').prepend("<h1>Dealer wins! You Lost!</h1>");
+        $('#out').css("display", "block");
+        $('#out-message').css("display", "block");
+        $('#play-again').click(function() {
+          location.href = "";
+          console.log("dealer wins");
+        })
+      }
+      else if (dealerPoint > 21) {
+        $('#out-m').prepend("<h1>DEALER BUSTS!</h1>");
+        $('#out').css("display", "block");
+        $('#out-message').css("display", "block");
+        console.log("Dealer busts!");
+        $('#play-again').click(function() {
+          location.href = "";
+        })
+      }
+      else if (dealerPoint === humanPoint){
+        $('#out-m').prepend("<h1>EVEN!</h1>");
+        $('#out').css("display", "block");
+        $('#out-message').css("display", "block");
+        console.log("EVEN!");
+        $('#play-again').click(function() {
+          location.href = "";
+        })
+      }
+      else {
+        $('#out-m').prepend("<h1>YOU WIN!</h1>");
+        $('#out').css("display", "block");
+        $('#out-message').css("display", "block");
+        console.log("you win!");
+        $('#play-again').click(function() {
+          location.href = "";
+        })
+      }
+    })
+  })
 
 })/* Ready jquery function closing brackets */
