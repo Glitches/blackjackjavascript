@@ -26,7 +26,6 @@ input {
 }
 
 button {
-  border: 3px, solid, black;
   border-radius: 10px;
   background: linear-gradient(#d39a1f, #e2c688);
   padding: 15px;
@@ -59,10 +58,11 @@ img {
 #myPoints {
   grid-column: 10;
   grid-row: 2;
-  border: 3px, solid, black;
-  border-radius: 10px;
 }
-
+#xyz {
+  border-radius: 10px;
+  background: linear-gradient(#d39a1f, #e2c688);
+}
 #dealer {
   grid-column: 2/9;
   grid-row: auto;
@@ -76,11 +76,17 @@ img {
 #dealer-name {
   grid-column: 1;
   grid-row: 1;
+  padding: 15px;
+  border-radius: 10px;
+  background: linear-gradient(#d39a1f, #e2c688);
 }
 
 #player-name {
   grid-column: 1;
   grid-row: 2;
+  padding: 15px;
+  border-radius: 10px;
+  background: linear-gradient(#d39a1f, #e2c688);
 }
 
 .container {

@@ -52,7 +52,7 @@ $(document).ready(function(){
       let x = drawCard();
       dealer.cards.push(x);
       //let d = cards[x];
-      let a = "<img id='back' src='deck/back.png'>"
+      let a = "<img id='back' src='deck/playing-card-back.jpg'>"
       $('#dealer').append(a);
       humanCard();
       dealerCard();
