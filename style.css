@@ -5,6 +5,8 @@
 
 body {
   background: linear-gradient(to bottom right, #1c930a, #6ec124); /*#04d631;*/
+  left: 0;
+  top: 0;
   /*display: grid;*/
   /*grid-template-rows: repeat(2, 1fr); fit-content(300px) fit-content(300px) 1fr;*/
   /*grid-gap: 0px;*/
@@ -56,7 +58,9 @@ img {
 
 #myPoints {
   grid-column: 10;
-  grid-row: 2
+  grid-row: 2;
+  border: 3px, solid, black;
+  border-radius: 10px;
 }
 
 #dealer {
@@ -67,6 +71,16 @@ img {
 #player {
   grid-column: 2/9;
   grid-row: auto;
+}
+
+#dealer-name {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+#player-name {
+  grid-column: 1;
+  grid-row: 2;
 }
 
 .container {
@@ -89,6 +103,7 @@ img {
   background-color: rgb(0,0,0); /* Fallback color */
 }
 
+/* I want different opacities for intro and ending modal boxes' background */
 #intro {
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }

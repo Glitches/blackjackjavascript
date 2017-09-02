@@ -2,7 +2,8 @@ $(document).ready(function(){
   $('#welcome_button').click(function() {
     $( "#intro" ).hide( "drop", { direction: "down" }, "slow" );
 
-    //The deck
+    /*The deck: an array contaning the cards' namefiles: the position corresponds to the right card value
+     i.e 0-3 positions are aces 48-51 pos are kings */
     let cards = ["AC","AD","AH","AS","2C","2D","2H","2S","3C","3D","3H",
     "3S","4C", "4D", "4H", "4S", "5C", "5D", "5H", "5S", "6C", "6D", "6H", "6S", "7C", "7D",
     "7H", "7S", "8C", "8D", "8H", "8S", "9C", "9D", "9H", "9S", "10C", "10D", "10H", "10S",
@@ -29,6 +30,7 @@ $(document).ready(function(){
       let x = drawCard();
       human.cards.push(x);
       let newFileName = cards[x];
+      /* newTag contains a string that correnspond to html image element and its link to a card */
       let newTag = "<img id=\"" + newFileName + "\" src='deck/" + newFileName + ".svg'>";
       $('#player').append(newTag);
       $(newFileName).effect("slide", 500)
@@ -43,8 +45,9 @@ $(document).ready(function(){
     };
 
     // draws 4 cards, two for each player
-    //devo attaccarci la parte grafica
     let startGame = function() {
+      let playerName ="<h1>" + $('input').val().toUpperCase() + "</h1>";
+      $('#player-name').append(playerName);
       humanCard();
       let x = drawCard();
       dealer.cards.push(x);
@@ -70,38 +73,6 @@ $(document).ready(function(){
       return num;
     };
 
-
-    /*let checkHandValue = function(player) {
-      let aceIsTen = 0;
-      let points = 0;
-      console.log(player.cards)
-      for (let i=0; i<player.cards.length; i++) {
-        // checks if there another ace valued 11 and evaluates if ace is 1 or 11 points
-        if (player.cards[i]<4 && player.currentPoints<=11) { //&& aceIsTen===0
-          points +=11;
-          aceIsTen = 1;
-        }
-        else if (player.cards[i]<4 && player.currentPoints >= 11) {
-          points +=1;
-        }
-        else if (player.currentPoints>=11 && aceIsTen === 1 ) {
-          points -= 10;
-          let value = Math.floor(player.cards[i]/4);
-          points += value;
-        }
-        else if (player.cards[i]>35) {
-          points += 10;
-        }
-        else {
-          let value = Math.floor(player.cards[i]/4) + 1;
-          points += value;
-        }
-        console.log(player.currentPoints);
-        console.log(points);
-      }
-      return points;
-    }*/
-
     // Given the card numbers array, returns its value in blackjack points
     let checkHandValue = function(player) {
       let aceIsTen = 0;
@@ -116,10 +87,13 @@ $(document).ready(function(){
         else if (player.cards[i]<4 && points >= 11) {
           points +=1;
         }
-        else if (points>11 && aceIsTen === 1 ) {
+
+        else if (points>10 && aceIsTen === 1 ) {
           // i.e cards ranging from 32 to 35 are 9, 35/4 rounded is 8, so +1 is needed
           //let value = ;
-          points += (Math.floor(player.cards[i]/4) - 9);
+          if (cards[i] <= 35) {
+            points += (Math.floor(cards[i]/4) -9);
+          }
         }
         else if (player.cards[i]>35) {points += 10;}
         else {points += (Math.floor(player.cards[i]/4) + 1);}
@@ -228,7 +202,7 @@ $(document).ready(function(){
       }
       let dealerPoint = checkHandValue(dealer);
       if (dealerPoint > humanPoint && dealerPoint <= 21){
-        $('#out-m').prepend("<h1>Dealer wins! You Lost!</h1>");
+        $('#out-m').prepend("<h1>DEALER WINS! YOU LOST!</h1>");
         $('#out').css("display", "block");
         $('#out-message').css("display", "block");
         $('#play-again').click(function() {
@@ -255,7 +229,7 @@ $(document).ready(function(){
         })
       }
       else {
-        $('#out-m').prepend("<h1>YOU WIN!</h1>");
+        $('#out-m').prepend("<h1>YOU WON!</h1>");
         $('#out').css("display", "block");
         $('#out-message').css("display", "block");
         console.log("you win!");
