@@ -1,16 +1,12 @@
 /* First style for standard html elements*/
 * {
-  font-family: roboto, sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
   background: linear-gradient(to bottom right, #1c930a, #6ec124); /*#04d631;*/
   left: 0;
   top: 0;
-  /*display: grid;*/
-  /*grid-template-rows: repeat(2, 1fr); fit-content(300px) fit-content(300px) 1fr;*/
-  /*grid-gap: 0px;*/
-  /*box-sizing: content-box;*/
 }
 
 p {
@@ -23,6 +19,7 @@ input {
   box-shadow: 10px 10px 5px #888888;
   width: 30%;
   height: 50px;
+  padding-left: 20px;
 }
 
 button {
@@ -55,14 +52,6 @@ img {
   padding-right: 20px;
 }
 
-#myPoints {
-  grid-column: 10;
-  grid-row: 2;
-}
-#xyz {
-  border-radius: 10px;
-  background: linear-gradient(#d39a1f, #e2c688);
-}
 #dealer {
   grid-column: 2/9;
   grid-row: auto;
@@ -148,7 +137,6 @@ img {
   padding: 15px;
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.2); /* Black w/ opacity */
-
 }
 
 #out-m {
@@ -176,7 +164,7 @@ img {
   width: 80%;
 }
 
-/* game buttons specific style */
+/* hit and stand buttons specific style */
 #hit, #stand {
   width: 150px;
 }
