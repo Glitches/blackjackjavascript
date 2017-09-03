@@ -45,7 +45,6 @@ $(document).ready(function(){
          $('#out-m').prepend("<h1>EVEN!</h1>");
          showExitModal();
        }
-
         else if (dealerPoint > 21) {
           $('#out-m').prepend("<h1>DEALER BUSTS!</h1>");
           showExitModal();
@@ -86,7 +85,6 @@ let startGame = function() {
   $('#myPoints').append(paragraph);
   //console.log(human.cards);
   isBlackJack();
-
 };
 
 //Create two players: cards is an array that stores the position of the cards on the cards array
@@ -103,13 +101,10 @@ let dealer = {
 };
 
 let showExitModal = function() {
-  $( "#out" ).show("slow" );
-  $('#out').css("display", "block");
   $('#out-message').css("display", "block");
+  $( "#out" ).show("slow" );
   //console.log("You lost!");
   $('#play-again').click(function() {
-    $('#out').css("display", "none");
-    $('#out-message').css("display", "none");
     $('#player').empty();
     $('#dealer').empty();
     //$('#player-name').empty();
@@ -118,7 +113,7 @@ let showExitModal = function() {
     dealer.cards = [];
     human.cards = [];
     cardsDrawn = [];
-    //location.href = "";
+    $( "#out" ).hide( "drop", { direction: "down" }, "fast" );
     startGame();
 
   });

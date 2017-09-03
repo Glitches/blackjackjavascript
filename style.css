@@ -92,7 +92,6 @@ img {
 
 /* this 3 selectors style up the modal-box's background */
 .modal-background {
-  display: block;
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 100px; /* Location of the box */
@@ -105,6 +104,7 @@ img {
 
 /* I want different opacities for intro and ending modal boxes' background */
 #intro {
+  display: block;
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
