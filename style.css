@@ -13,7 +13,12 @@ p {
   justify-content: center;
 }
 
+h2 {
+  display: inline-block;
+}
+
 input {
+  display: inline-block;
   font-size: 20px;
   border-radius: 10px;
   box-shadow: 10px 10px 5px #888888;
@@ -112,7 +117,7 @@ img {
 #modal-welcome {
   display: block;
   position: fixed;
-  background-color: #8b9e8f;
+  /*background-color: #6ec124;*/
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   z-index: 1; /* Sit on top */
@@ -127,7 +132,7 @@ img {
 #out-message {
   display: none;
   position: fixed;
-  background-color: #8b9e8f;
+  /*background-color: #8b9e8f;*/
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   z-index: 1; /* Sit on top */
@@ -143,7 +148,7 @@ img {
   text-align: center;
   border: 3px, solid, black;
   border-radius: 10px;
-  background-color: #fefefe;
+  background-color: #1c930a;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
@@ -154,7 +159,7 @@ img {
   text-align: center;
   border: 3px, solid, black;
   border-radius: 10px;
-  background-color: #fefefe;
+  background-color: #1c930a;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   width: 80%;
@@ -162,6 +167,11 @@ img {
 
 #welcome_button {
   width: 80%;
+}
+
+#input {
+  padding: 10px;
+
 }
 
 /* hit and stand buttons specific style */
