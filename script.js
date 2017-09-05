@@ -1,7 +1,7 @@
 $(document).ready(function(){
   $('#welcome_button').click(function() {
     $( "#intro" ).hide( "drop", { direction: "down" }, "slow" );
-
+    $('#dollarValue').append(bet);
     /* From now on, the game starts:
     append player's name to its div;
     set the page;
@@ -12,7 +12,7 @@ $(document).ready(function(){
     out modal box */
     let playerName ="<h1>" + $('input').val().toUpperCase() + "</h1>";
     $('#player-name').prepend(playerName);
-    startGame();
+    //startGame();
       /*let humanPoint =  checkHandValue(human);
       let paragraph = "<h3>POINTS: <span id='number'>"  + humanPoint + "</span></h3>";
       $('#myPoints').append(paragraph);*/
@@ -73,7 +73,14 @@ $(document).ready(function(){
         if(bet <=20 && bet < human.money) {bet += 5;}
         $('#dollarValue').empty();
         $('#dollarValue').append(bet);
-      })
+      });
+
+      $('#start').click(function() {
+        $('#plusMinus').hide( "drop", { direction: "down" }, "slow" );
+        $('#start').hide("drop", {direction: "down"}, "slow");
+        startGame();
+      });
+
   });
 })/* Ready jquery function closing brackets */
 
@@ -105,7 +112,7 @@ let startGame = function() {
   //console.log(human.cards);
   $('#dollarValue').empty();
   $('#dollarValue').append(bet);
-  
+
   isBlackJack();
 };
 
@@ -125,6 +132,9 @@ let dealer = {
 let showExitModal = function() {
   $('#out-message').css("display", "block");
   $( "#out" ).show("slow" );
+  $('#plusMinus').show( "drop", { direction: "down" }, "fast" );
+  $('#start').show( "drop", { direction: "down" }, "fast" );
+  $('#dollarValue').append(bet);
   //console.log("You lost!");
   $('#play-again').click(function() {
     $('#player').empty();
@@ -136,8 +146,9 @@ let showExitModal = function() {
     human.cards = [];
     cardsDrawn = [];
     $( "#out" ).hide( "drop", { direction: "down" }, "fast" );
-    startGame();
-
+    let mon = "<h3>BALANCE: $<span id='myMoney'>" + human.money + "</span></h3>";
+    $('#myPoints').append(paragraph);
+    $('#myPoints').append(mon);
   });
 }
 
