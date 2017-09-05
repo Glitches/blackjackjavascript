@@ -25,6 +25,7 @@ $(document).ready(function(){
         $('#number').append(humanPoint);
         if (humanPoint>21) {
           $('#out-m').prepend("<h1>You Lost!</h1>");
+          human.money -= bet;
           console.log('sono qui')
           showExitModal();
         }
@@ -47,17 +48,32 @@ $(document).ready(function(){
        }
         else if (dealerPoint > 21) {
           $('#out-m').prepend("<h1>DEALER BUSTS!</h1>");
+          human.money += (2*bet);
           showExitModal();
         }
         else if (dealerPoint > humanPoint){
           $('#out-m').prepend("<h1>DEALER WINS! YOU LOST!</h1>");
+          human.money -= bet;
           showExitModal();
         }
         else {
           $('#out-m').prepend("<h1>YOU WON!</h1>");
+          human.money += (2*bet);
           showExitModal();
         }
       });
+
+      $('#minus').click(function(){
+        if(bet) {bet -= 5;}
+        $('#dollarValue').empty();
+        $('#dollarValue').append(bet);
+      });
+
+      $('#plus').click(function(){
+        if(bet <=20 && bet < human.money) {bet += 5;}
+        $('#dollarValue').empty();
+        $('#dollarValue').append(bet);
+      })
   });
 })/* Ready jquery function closing brackets */
 
@@ -70,6 +86,7 @@ let cards = ["AC","AD","AH","AS","2C","2D","2H","2S","3C","3D","3H",
 "JC", "JD", "JH", "JS", "QC", "QD", "QH", "QS", "KC", "KD", "KH", "KS"];
 
 let cardsDrawn = [];
+var bet = 5;
 
 // draws 4 cards, two for each player and calls isBlackJack
 let startGame = function() {
@@ -81,9 +98,14 @@ let startGame = function() {
   humanCard();
   dealerCard();
   let humanPoint = checkHandValue(human);
-  let paragraph = "<h3>POINTS: <span id='number'>"  + humanPoint + "</span></h3>";
+  let paragraph = "<h3>POINTS: <span id='number'>"  + humanPoint + "</span> </h3>";
+  let mon = "<h3>BALANCE: $<span id='myMoney'>" + human.money + "</span></h3>";
   $('#myPoints').append(paragraph);
+  $('#myPoints').append(mon);
   //console.log(human.cards);
+  $('#dollarValue').empty();
+  $('#dollarValue').append(bet);
+  
   isBlackJack();
 };
 
@@ -158,6 +180,7 @@ let isBlackJack = function() {
     //let a = "<img id='back' src='deck/" + cards[d] + ".svg'>";
     $('#dealer').prepend("<img id='back' src='deck/" + cards[d] + ".svg'>");
     $('#out-m').prepend("<h1>DEALER'S BLACKJACK - YOU LOST!</h1>");
+    human.money -= bet;
     showExitModal();
   }
   else if (checkHandValue(human)=== 21) {
@@ -166,6 +189,7 @@ let isBlackJack = function() {
     //let a = "<img id='back' src='deck/" + cards[d] + ".svg'>";
     $('#dealer').prepend("<img id='back' src='deck/" + cards[d] + ".svg'>");
     $('#out-m').prepend("<h1>YOUR BLACKJACK - YOU WIN!</h1>");
+    human.money += (2*bet);
     showExitModal();
   }
 }

@@ -54,10 +54,11 @@ img {
 .choices {
   grid-column: 10;
   grid-row: 2;
-  padding-right: 20px;
+  padding: 20px;
 }
 
 #money-maker {
+  text-align: center;
   grid-column: 10;
   grid-row: 1;
   padding: 20px;
@@ -181,6 +182,6 @@ img {
 }
 
 /* hit and stand buttons specific style */
-#hit, #stand {
+#hit, #stand, #plus, #minus {
   width: 150px;
 }
