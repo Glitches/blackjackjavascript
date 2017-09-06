@@ -52,6 +52,7 @@ img {
 
 /* grid column and grid row help placing elements in the proper position */
 .choices {
+  text-align: center;
   grid-column: 10;
   grid-row: 2;
   padding: 20px;
@@ -72,6 +73,10 @@ img {
 #player {
   grid-column: 2/9;
   grid-row: auto;
+}
+
+#plusMinus {
+  padding: 20px;
 }
 
 #dealer-name {
@@ -181,7 +186,13 @@ img {
 
 }
 
+/* start button */
+#start {
+  width: 150px;
+  background: linear-gradient(#f44245, #f48341);
+}
+
 /* hit and stand buttons specific style */
-#hit, #stand, #plus, #minus {
+#hit, #stand, #plus, #minus, #doubleDown {
   width: 150px;
 }

@@ -53,7 +53,7 @@ $(document).ready(function(){
         let dealerPoint = checkHandValue(dealer);
         if (dealerPoint === humanPoint){
          $('#out-m').prepend("<h1>EVEN!</h1>");
-         human.money -= bet;
+         human.money += bet;
          showExitModal();
        }
         else if (dealerPoint > 21) {
@@ -106,7 +106,7 @@ $(document).ready(function(){
         let dealerPoint = checkHandValue(dealer);
         if (dealerPoint === humanPoint){
          $('#out-m').prepend("<h1>EVEN!</h1>");
-         human.money -= (2*bet);
+         human.money -= bet;
          showExitModal();
        }
         else if (dealerPoint > 21) {
@@ -236,7 +236,7 @@ let isBlackJack = function() {
     let d = dealer.cards[0];
     //let a = "<img id='back' src='deck/" + cards[d] + ".svg'>";
     $('#dealer').prepend("<img id='back' src='deck/" + cards[d] + ".svg'>");
-    human.money -= bet;
+    human.money += bet;
     $('#out-m').prepend("<h1>BOTH BLACKJACK! NO GAIN NO  PAIN!</h1>");
     showExitModal();
   }
@@ -278,7 +278,7 @@ let checkHandValue = function(player) {
   let aceIsTen = 0;
   let points = 0;
   for (let i=0; i<player.cards.length; i++) {
-    if (player.cards[i]<4 && aceIsTen == 0 && points<=11) { //
+    if (player.cards[i]<4 && aceIsTen === 0 && points<=11) { //
       points +=11;
       aceIsTen = 1;
     }
