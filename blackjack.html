@@ -27,8 +27,8 @@
 <body>
 
   <!-- This div contains the modal dialog box at start -->
-  <div class="modal-background" id="intro">
-    <div id="modal-welcome">
+  <div class="modalBackground" id="intro">
+    <div id="modalWelcome">
       <div id="welcome">
         <h1>Welcome to my simple Blackjack game!</h1>
         <div id="input">
@@ -37,7 +37,7 @@
         </div>
         <br />
         <br />
-        <button id="welcome_button">
+        <button id="welcomeButton">
           <p>LET'S PLAY!</p>
         </button>
       </div>
@@ -45,10 +45,10 @@
   </div>
 
   <!-- This div is for the modal box at the end of the game -->
-  <div class="modal-background" id="out">
-    <div id="out-message">
-      <div id="out-m">
-        <button id="play-again">WANNA PLAY AGAIN?</button>
+  <div class="modalBackground" id="out">
+    <div id="outMessage">
+      <div id="outM">
+        <button id="playAgain">WANNA PLAY AGAIN?</button>
       </div>
 
     </div>
@@ -57,9 +57,9 @@
   <!-- This div contains the elements during the game uses display: grid -->
   <div class="wrapper">
     <!-- dealer's card row -->
-    <div id="dealer-name"><h1>DEALER</h1></div>
+    <div id="dealerName"><h1>DEALER</h1></div>
     <div class="container" id="dealer"></div>
-    <div id="money-maker">
+    <div id="moneyMaker">
       <h3>BET:</h3>
       <h3 id="dollarValue"></h3>
       <div id="plusMinus">
@@ -70,7 +70,7 @@
       </div>
       </div>
     <!-- player's card row -->
-    <div id="player-name">
+    <div id="playerName">
       <div id="myPoints">
           <h3>POINTS: <span id='number'></span></h3>
           <h3>BALANCE: $<span id='myMoney'></span></h3>

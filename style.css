@@ -58,28 +58,35 @@ img {
   padding: 20px;
 }
 
-#money-maker {
+/* div containing bet buttons etc */
+#moneyMaker {
   text-align: center;
   grid-column: 10;
   grid-row: 1;
   padding: 20px;
+  border-radius: 10px;
+  background: linear-gradient(#d39a1f, #e2c688);
 }
 
+/* dealer's card space */
 #dealer {
   grid-column: 2/9;
   grid-row: auto;
 }
 
+/* player's card space */
 #player {
   grid-column: 2/9;
   grid-row: auto;
 }
 
+/* div containing plus and minus buttons */
 #plusMinus {
   padding: 20px;
 }
 
-#dealer-name {
+
+#dealerName {
   grid-column: 1;
   grid-row: 1;
   padding: 15px;
@@ -87,7 +94,7 @@ img {
   background: linear-gradient(#d39a1f, #e2c688);
 }
 
-#player-name {
+#playerName {
   grid-column: 1;
   grid-row: 2;
   padding: 15px;
@@ -103,7 +110,7 @@ img {
 }
 
 /* this 3 selectors style up the modal-box's background */
-.modal-background {
+.modalBackground {
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 100px; /* Location of the box */
@@ -122,11 +129,11 @@ img {
 
 #out{
   display: none; /* Hidden by default */
-  background-color: rgba(0,0,0,0.2); /* Black w/ opacity */
+  background-color: rgba(0,0,0,0.1); /* Black w/ opacity */
 }
 
 /* from now on styling up the modal boxes */
-#modal-welcome {
+#modalWelcome {
   display: block;
   position: fixed;
   /*background-color: #6ec124;*/
@@ -141,7 +148,7 @@ img {
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-#out-message {
+#outMessage {
   display: none;
   position: fixed;
   /*background-color: #8b9e8f;*/
@@ -156,7 +163,7 @@ img {
   background-color: rgba(0,0,0,0.2); /* Black w/ opacity */
 }
 
-#out-m {
+#outM {
   text-align: center;
   border: 3px, solid, black;
   border-radius: 10px;
@@ -177,7 +184,7 @@ img {
   width: 80%;
 }
 
-#welcome_button {
+#welcomeButton {
   width: 80%;
 }
 
