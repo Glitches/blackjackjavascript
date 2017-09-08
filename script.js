@@ -20,108 +20,107 @@ $(document).ready(function(){
     let mon = "<h3>BALANCE: $<span id='myMoney'>" + human.money + "</span></h3>";
     $('#myPoint').append(mon);
 
-      /* add a card to players' one when clicked */
-      $('#hit').click(function() {
-        humanCard();
-        let humanPoint = checkHandValue(human);
-        $('#number').empty();
-        $('#number').append(humanPoint);
-        $('#doubleDown').hide("drop", { direction: "down"}, "fast");
-        if (humanPoint>21) {
-          $('#outM').prepend("<h1>You Lost!</h1>");
-          //human.money -= bet;
-          //console.log('sono qui')
-          showExitModal();
-        }
-      });
+    /* add a card to players' one when clicked */
+    $('#hit').click(function() {
+      humanCard();
+      let humanPoint = checkHandValue(human);
+      $('#number').empty();
+      $('#number').append(humanPoint);
+      $('#doubleDown').hide("drop", { direction: "down"}, "fast");
+      if (humanPoint>21) {
+        $('#outM').prepend("<h1>You Lost!</h1>");
+        //console.log('sono qui')
+        showExitModal();
+      }
+    });
 
-      /* When clicked dealer game starts */
-      $('#stand').click(function() {
-        $('#doubleDown').hide("drop", { direction: "down"}, "fast");
-        /*$('#back').effect("fold", 500);
-        let firstCard = dealer.cards[0];
-        let cardImage = "<img id='back' src='deck/" + cards[firstCard] + ".svg'>";*/
-        //$('#dealer').prepend(cardImage);
-        humanPoint = checkHandValue(human);
-        while (checkHandValue(dealer)<=16){
-          dealerCard();
-        }
-        let dealerPoint = checkHandValue(dealer);
-        if (dealerPoint === humanPoint){
-         $('#outM').prepend("<h1>EVEN!</h1>");
-         human.money += bet;
-         showExitModal();
-       }
-        else if (dealerPoint > 21) {
-          $('#outM').prepend("<h1>DEALER BUSTS!</h1>");
-          human.money += (2*bet);
-          showExitModal();
-        }
-        else if (dealerPoint > humanPoint){
-          $('#outM').prepend("<h1>DEALER WINS! YOU LOST!</h1>");
-          showExitModal();
-        }
-        else {
-          $('#outM').prepend("<h1>YOU WON!</h1>");
-          human.money += (2*bet);
-          showExitModal();
-        }
-      });
+    /* When clicked dealer game starts */
+    $('#stand').click(function() {
+      $('#doubleDown').hide("drop", { direction: "down"}, "fast");
+      /*$('#back').effect("fold", 500);
+      let firstCard = dealer.cards[0];
+      let cardImage = "<img id='back' src='deck/" + cards[firstCard] + ".svg'>";*/
+      //$('#dealer').prepend(cardImage);
+      humanPoint = checkHandValue(human);
+      while (checkHandValue(dealer)<=16){
+        dealerCard();
+      }
+      let dealerPoint = checkHandValue(dealer);
+      if (dealerPoint === humanPoint){
+        $('#outM').prepend("<h1>EVEN!</h1>");
+        human.money += bet;
+        showExitModal();
+      }
+      else if (dealerPoint > 21) {
+        $('#outM').prepend("<h1>DEALER BUSTS!</h1>");
+        human.money += (2*bet);
+        showExitModal();
+      }
+      else if (dealerPoint > humanPoint){
+        $('#outM').prepend("<h1>DEALER WINS! YOU LOST!</h1>");
+        showExitModal();
+      }
+      else {
+        $('#outM').prepend("<h1>YOU WON!</h1>");
+        human.money += (2*bet);
+        showExitModal();
+      }
+    });
 
-      $('#minus').click(function(){
-        if(bet >= 10) {bet -= 5;}
-        $('#dollarValue').empty();
-        $('#dollarValue').append(bet);
-      });
+    $('#minus').click(function(){
+      if(bet >= 10) {bet -= 5;}
+      $('#dollarValue').empty();
+      $('#dollarValue').append(bet);
+    });
 
-      $('#plus').click(function(){
-        if(bet <=20 && bet < human.money) {bet += 5;}
-        $('#dollarValue').empty();
-        $('#dollarValue').append(bet);
-      });
+    $('#plus').click(function(){
+      if(bet <=20 && bet < human.money) {bet += 5;}
+      $('#dollarValue').empty();
+      $('#dollarValue').append(bet);
+    });
 
-      $('#start').click(function() {
-        $('#plusMinus').hide( "drop", { direction: "down" }, "slow" );
-        $('#start').hide("drop", {direction: "down"}, "slow");
-        $('#hit').show( "drop", { direction: "down" }, "fast" );
-        $('#stand').show( "drop", { direction: "down" }, "fast" );
-        startGame();
-      });
+    $('#start').click(function() {
+      $('#plusMinus').hide( "drop", { direction: "down" }, "slow" );
+      $('#start').hide("drop", {direction: "down"}, "slow");
+      $('#hit').show( "drop", { direction: "down" }, "fast" );
+      $('#stand').show( "drop", { direction: "down" }, "fast" );
+      startGame();
+    });
 
-      $('#doubleDown').click(function(){
-        humanCard();
-        $('#back').effect("fold", 500);
-        let firstCard = dealer.cards[0];
-        let cardImage = "<img id='back' src='deck/" + cards[firstCard] + ".svg'>";
-        $('#dealer').prepend(cardImage);
-        let humanPoint = checkHandValue(human);
-        $('#number').empty();
-        $('#number').append(humanPoint);
-        while (checkHandValue(dealer)<=16){
-          dealerCard();
-        }
-        let dealerPoint = checkHandValue(dealer);
-        if (dealerPoint === humanPoint){
-         $('#outM').prepend("<h1>EVEN!</h1>");
-         human.money -= bet;
-         showExitModal();
-       }
-        else if (dealerPoint > 21) {
-          $('#outM').prepend("<h1>DEALER BUSTS!</h1>");
-          human.money += (4*bet);
-          showExitModal();
-        }
-        else if (dealerPoint > humanPoint){
-          $('#outM').prepend("<h1>DEALER WINS! YOU LOST!</h1>");
-          human.money -= bet;
-          showExitModal();
-        }
-        else {
-          $('#outM').prepend("<h1>YOU WON!</h1>");
-          human.money += (4*bet);
-          showExitModal();
-        }
-      });
+    $('#doubleDown').click(function(){
+      humanCard();
+      $('#back').effect("fold", 500);
+      let firstCard = dealer.cards[0];
+      let cardImage = "<img id='back' src='deck/" + cards[firstCard] + ".svg'>";
+      $('#dealer').prepend(cardImage);
+      let humanPoint = checkHandValue(human);
+      $('#number').empty();
+      $('#number').append(humanPoint);
+      while (checkHandValue(dealer)<=16){
+        dealerCard();
+      }
+      let dealerPoint = checkHandValue(dealer);
+      if (dealerPoint === humanPoint){
+        $('#outM').prepend("<h1>EVEN!</h1>");
+        human.money -= bet;
+        showExitModal();
+      }
+      else if (dealerPoint > 21) {
+        $('#outM').prepend("<h1>DEALER BUSTS!</h1>");
+        human.money += (4*bet);
+        showExitModal();
+      }
+      else if (dealerPoint > humanPoint){
+        $('#outM').prepend("<h1>DEALER WINS! YOU LOST!</h1>");
+        human.money -= bet;
+        showExitModal();
+      }
+      else {
+        $('#outM').prepend("<h1>YOU WON!</h1>");
+        human.money += (4*bet);
+        showExitModal();
+      }
+    });
 
   });
 })/* Ready jquery function closing brackets */
@@ -134,8 +133,8 @@ let cards = ["AC","AD","AH","AS","2C","2D","2H","2S","3C","3D","3H",
 "7H", "7S", "8C", "8D", "8H", "8S", "9C", "9D", "9H", "9S", "10C", "10D", "10H", "10S",
 "JC", "JD", "JH", "JS", "QC", "QD", "QH", "QS", "KC", "KD", "KH", "KS"];
 
-let cardsDrawn = [];
-var bet = 5;
+let cardsDrawn = [] , bet = 5;
+
 
 // draws 4 cards, two for each player and calls isBlackJack
 let startGame = function() {
@@ -187,8 +186,6 @@ let showExitModal = function() {
   $('#playAgain').click(function() {
     $('#dealerName h3').remove();
     $('#player, #dealer, #number').empty();
-    //$('#dealer').empty();
-    //$('#number').empty();
     $('#outM h1').remove();
     dealer.cards = [];
     human.cards = [];
@@ -228,24 +225,15 @@ call the ending modal box and tells what's appening */
 let isBlackJack = function() {
   // The dealer wins no matter what
   if (checkHandValue(dealer) === 21 && checkHandValue(human) === 21) {
-    /*$('#back').effect("fold", 500);
-    let firstCard = dealer.cards[0];
-    $('#dealer').prepend("<img id='back' src='deck/" + cards[firstCard] + ".svg'>");*/
     human.money += bet;
     $('#outM').prepend("<h1>BOTH BLACKJACK! NO GAIN NO  PAIN!</h1>");
     showExitModal();
   }
   else if (checkHandValue(dealer) === 21) {
-    /*$('#back').effect("fold", 500);
-    let firstCard = dealer.cards[0];
-    $('#dealer').prepend("<img id='back' src='deck/" + cards[firstCard] + ".svg'>");*/
     $('#outM').prepend("<h1>DEALER'S BLACKJACK - YOU LOST!</h1>");
     showExitModal();
   }
   else if (checkHandValue(human)=== 21) {
-    /*$('#back').effect("fold", 500);
-    let firstCard = dealer.cards[0];
-    $('#dealer').prepend("<img id='back' src='deck/" + cards[firstCard] + ".svg'>");*/
     $('#outM').prepend("<h1>YOUR BLACKJACK - YOU WIN!</h1>");
     human.money += (2*bet);
     showExitModal();
@@ -258,9 +246,6 @@ We use 52 because floor works in this interval [0,1) 1 excluded
 let drawCard = function() {
   let num = Math.floor(52 * Math.random());
   if(cardsDrawn.indexOf(num) !== -1) {return drawCard()};
-  /*for(let i=0; i<cardsDrawn.length; i++){
-    if (num === cardsDrawn[i]) {return drawCard()};
-  }*/
   cardsDrawn.push(num);
   //console.log(cardsDrawn);
   return num;
@@ -268,8 +253,7 @@ let drawCard = function() {
 
 // Given the card numbers array, returns its value in blackjack points
 let checkHandValue = function(player) {
-  let aceIsTen = 0;
-  let points = 0;
+  let aceIsTen = 0, points = 0;
   for (let i=0; i<player.cards.length; i++) {
     if (player.cards[i]<4 && aceIsTen === 0 && points<=11) { //
       points +=11;
