@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<!-- Thanks to Peter Tripp for card images
+    https://github.com/notpeter/Vector-Playing-Cards
+-->
+
+<html>
+
+<head>
+  <title>Simple BalckJack</title>
+  <!-- here are linked stylesheets and scripts needed:
+    1 my stylesheet
+    2 jQuery library
+    3 jQuery UI library
+    4 jQuery UI stylesheet
+    5 roboto font stylesheet
+    6 my JS script
+  -->
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <script src="script.js"></script>
+</head>
+
+<body>
+
+  <!-- This div contains the modal dialog box at start -->
+  <div class="modalBackground" id="intro">
+    <div id="modalWelcome">
+      <div id="welcome">
+        <h1>Welcome to my simple Blackjack game!</h1>
+        <div id="input">
+          <h2> Your name: </h2>
+          <input id="myName" type="text">
+        </div>
+        <br />
+        <br />
+        <button id="welcomeButton">
+          <p>LET'S PLAY!</p>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- This div is for the modal box at the end of the game -->
+  <div class="modalBackground" id="out">
+    <div id="outMessage">
+      <div id="outM">
+        <button id="playAgain">WANNA PLAY AGAIN?</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- This div contains the elements during the game uses display: grid -->
+  <div class="wrapper">
+    <!-- dealer's card row -->
+    <div id="dealerName"><h1>DEALER</h1></div>
+    <div class="container" id="dealer"></div>
+    <div id="moneyMaker">
+      <h4>BET: $</h4>
+      <h4 id="dollarValue"></h4>
+      <div id="plusMinus">
+        <button id="plus">+5$</button>
+        <br  />
+        <br  />
+        <button id="minus">-5$</button>
+      </div>
+      </div>
+    <!-- player's card row -->
+    <div id="playerName">
+      <div id="myPoints">
+          <h4>POINTS: <span id='number'></span></h4>
+          <h4>BALANCE: $<span id='myMoney'></span></h4>
+      </div>
+    </div>
+    <div class="container" id="player"></div>
+    <!-- button and points block on the right -->
+    <div class= "choices">
+      <button id="hit">HIT</button>
+      <br />
+      <br />
+      <button id="stand">STAND</button>
+      <br />
+      <br />
+      <button id="start">DEAL</button>
+      <br  />
+      <br  />
+      <button id="doubleDown">DOUBLE DOWN</button>
+    </div>
+  </div>
+
+</body>
+</html>
