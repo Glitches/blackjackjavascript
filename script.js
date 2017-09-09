@@ -128,10 +128,11 @@ $(document).ready(function(){
 
 /*The deck: an array contaning the cards' namefiles: the position corresponds to the right card value
 i.e 0-3 positions are aces 48-51 pos are kings */
-let cards = ["AC","AD","AH","AS","2C","2D","2H","2S","3C","3D","3H",
-"3S","4C", "4D", "4H", "4S", "5C", "5D", "5H", "5S", "6C", "6D", "6H", "6S", "7C", "7D",
-"7H", "7S", "8C", "8D", "8H", "8S", "9C", "9D", "9H", "9S", "10C", "10D", "10H", "10S",
-"JC", "JD", "JH", "JS", "QC", "QD", "QH", "QS", "KC", "KD", "KH", "KS"];
+let cards = ["AC","AD","AH","AS","AC","AD","AH","AS","2C","2D","2H","2S","2C","2D","2H","2S","3C","3D","3H",
+"3S","3C","3D","3H","3S","4C", "4D", "4H","4S","4C","4D","4H","4S","5C","5D","5H","5S","5C","5D","5H","5S","6C","6D","6H","6S",
+"6C","6D","6H","6S","7C","7D","7H","7S","7C","7D","7H","7S","8C","8D","8H","8S","8C","8D","8H","8S","9C","9D","9H","9S","9C",
+"9D","9H","9S","10C","10D","10H","10S","10C","10D","10H","10S","JC","JD","JH","JS","JC","JD","JH","JS","QC","QD","QH","QS","QC",
+"QD","QH","QS","KC","KD","KH","KS","KC","KD","KH","KS"];
 
 let cardsDrawn = [] , bet = 5;
 
@@ -244,7 +245,7 @@ let isBlackJack = function() {
 We use 52 because floor works in this interval [0,1) 1 excluded
 51.99 will be rounded down to 51 giving the same probability as the other numbers */
 let drawCard = function() {
-  let num = Math.floor(52 * Math.random());
+  let num = Math.floor(104 * Math.random());
   if(cardsDrawn.indexOf(num) !== -1) {return drawCard()};
   cardsDrawn.push(num);
   //console.log(cardsDrawn);
@@ -255,13 +256,13 @@ let drawCard = function() {
 let checkHandValue = function(player) {
   let aceIsTen = 0, points = 0;
   for (let i=0; i<player.cards.length; i++) {
-    if (player.cards[i]<4 && aceIsTen === 0 && points<=11) { //
+    if (player.cards[i]<8 && aceIsTen === 0 && points<=11) { //
       points +=11;
       aceIsTen = 1;
     }
-    else if (player.cards[i]<4) {points +=1;}
-    else if (player.cards[i]>35) {points += 10;}
-    else {points += (Math.floor(player.cards[i]/4) + 1);}
+    else if (player.cards[i]<8) {points +=1;}
+    else if (player.cards[i]>71) {points += 10;}
+    else {points += (Math.floor(player.cards[i]/8) + 1);}
     if (points>21 && aceIsTen == 1) {
       points -= 10;
       aceIsTen = 0;
