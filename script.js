@@ -1,6 +1,8 @@
 $(document).ready(function(){
+  //$('#modalBackground').show("slow");
   $('#welcomeButton').click(function() {
-    $( "#intro" ).hide( "drop", { direction: "down" }, "slow" );
+    $('#intro').hide( "drop", { direction: "down" }, "slow" );
+    $('#modalWelcome').hide( "drop", { direction: "down" }, "slow" );
     $('#dollarValue').append(bet);
     $('#myMoney').append(human.money);
     $('#hit').hide( "drop", { direction: "down" }, "slow" );
@@ -179,8 +181,8 @@ let showExitModal = function() {
   $('#dealerName').append("<h3> DEALER POINTS: " + dealerPoint);
   let firstCard = dealer.cards[0];
   $('#dealer').prepend("<img id='back' src='deck/" + cards[firstCard] + ".svg'>");
-  $('#outMessage').css("display", "block");
-  $( "#out" ).show("slow" );
+  $('#outMessage').show("slow"); //.css("display", "block");
+  //$( "#out" ).show("slow" );
   $('#plusMinus, #start').show( "drop", { direction: "down" }, "fast" );
   //$('#start').show( "drop", { direction: "down" }, "fast" );
   //console.log("You lost!");
@@ -193,7 +195,7 @@ let showExitModal = function() {
     cardsDrawn = [];
     $('#hit').hide("drop", { direction: "down" }, "fast");
     $('#stand').hide("drop", { direction: "down" }, "fast");
-    $( "#out" ).hide( "drop", { direction: "down" }, "fast" );
+    $('#outMessage').hide( "drop", { direction: "down" }, "fast" );
     $('#doubleDown').hide("drop", { direction: "down"}, "fast");
     $('#myMoney').empty();
     $('#myMoney').append(human.money);

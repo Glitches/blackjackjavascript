@@ -20,39 +20,37 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <script src="script.js"></script>
 </head>
 
 <body>
 
-  <!-- This div contains the modal dialog box at start -->
-  <div class="modalBackground" id="intro">
-    <div id="modalWelcome">
-      <div id="welcome">
-        <h1>Welcome to my simple Blackjack game!</h1>
-        <div id="input">
-          <h2> Your name: </h2>
-          <input id="myName" type="text">
+    <!-- This div contains the modal dialog box at start -->
+    <div id="intro">
+      <div id="modalWelcome">
+        <div id="welcome">
+          <h1>Welcome to my simple Blackjack game!</h1>
+          <div id="input">
+            <h2> Your name: </h2>
+            <input id="myName" type="text">
+          </div>
+          <br />
+          <br />
+          <button id="welcomeButton">LET'S PLAY!
+          </button>
         </div>
-        <br />
-        <br />
-        <button id="welcomeButton">
-          <p>LET'S PLAY!</p>
-        </button>
       </div>
     </div>
-  </div>
 
   <!-- This div is for the modal box at the end of the game -->
-  <div class="modalBackground" id="out">
+  <!-- <div class="modalBackground" id="out"> -->
     <div id="outMessage">
       <div id="outM">
         <button id="playAgain">WANNA PLAY AGAIN?</button>
       </div>
-
     </div>
-  </div>
+  <!-- </div> -->
 
   <!-- This div contains the elements during the game uses display: grid -->
   <div class="wrapper">
