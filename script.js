@@ -98,29 +98,36 @@ $(document).ready(function(){
       let humanPoint = checkHandValue(human);
       $('#number').empty();
       $('#number').append(humanPoint);
-      while (checkHandValue(dealer)<=16){
-        dealerCard();
-      }
-      let dealerPoint = checkHandValue(dealer);
-      if (dealerPoint === humanPoint){
-        $('#outM').prepend("<h1>EVEN!</h1>");
-        human.money -= bet;
-        showExitModal();
-      }
-      else if (dealerPoint > 21) {
-        $('#outM').prepend("<h1>DEALER BUSTS!</h1>");
-        human.money += (4*bet);
-        showExitModal();
-      }
-      else if (dealerPoint > humanPoint){
-        $('#outM').prepend("<h1>DEALER WINS! YOU LOST!</h1>");
+      if (humanPoint > 21) {
+        $('#outM').prepend("<h1>YOU BUST!</h1>")
         human.money -= bet;
         showExitModal();
       }
       else {
-        $('#outM').prepend("<h1>YOU WON!</h1>");
-        human.money += (4*bet);
-        showExitModal();
+        while (checkHandValue(dealer)<=16){
+          dealerCard();
+        }
+        let dealerPoint = checkHandValue(dealer);
+        if (dealerPoint === humanPoint){
+          $('#outM').prepend("<h1>EVEN!</h1>");
+          human.money -= bet;
+          showExitModal();
+        }
+        else if (dealerPoint > 21) {
+          $('#outM').prepend("<h1>DEALER BUSTS!</h1>");
+          human.money += (4*bet);
+          showExitModal();
+        }
+        else if (dealerPoint > humanPoint){
+          $('#outM').prepend("<h1>DEALER WINS! YOU LOST!</h1>");
+          human.money -= bet;
+          showExitModal();
+        }
+        else {
+          $('#outM').prepend("<h1>YOU WON!</h1>");
+          human.money += (4*bet);
+          showExitModal();
+        }
       }
     });
 
