@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 
-<!-- Thanks to Peter Tripp for card images
+<!--Thi is my assignment project for Codeworks admission.
+    It's a simple blackjack game with stand, hit, double down and bet.
+    Thanks to Peter Tripp for card images
     https://github.com/notpeter/Vector-Playing-Cards
 -->
 
 <html>
 
 <head>
-  <title>Simple BalckJack</title>
+  <title>Simple BlackJack</title>
   <!-- here are linked stylesheets and scripts needed:
     1 my stylesheet
     2 jQuery library
@@ -58,8 +60,8 @@
     <div id="dealerName"><h1>DEALER</h1></div>
     <div class="container" id="dealer"></div>
     <div id="moneyMaker">
-      <h4>BET: $</h4>
-      <h4 id="dollarValue"></h4>
+      <h4>BET: $ <span id="dollarValue"></span></h4>
+
       <div id="plusMinus">
         <button id="plus">+5$</button>
         <br  />
@@ -71,7 +73,7 @@
     <div id="playerName">
       <div id="myPoints">
           <h4>POINTS: <span id='number'></span></h4>
-          <h4>BALANCE: $<span id='myMoney'></span></h4>
+          <h4>BALANCE: $ <span id='myMoney'></span></h4>
       </div>
     </div>
     <div class="container" id="player"></div>
