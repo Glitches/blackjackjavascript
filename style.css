@@ -1,190 +1,199 @@
-/* First style for standard html elements*/
 * {
-  font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
-
 body {
-  background: linear-gradient(to bottom right, #1c930a, #6ec124);
-  left: 0;
-  top: 0;
+    background: linear-gradient(to bottom right, #1c930a, #6ec124);
+    background: -webkit-linear-gradient(to bottom right, #1c930a, #6ec124);
+    background: -moz-linear-gradient(to bottom right, #1c930a, #6ec124);
+    background: -ms-linear-gradient(to bottom right, #1c930a, #6ec124);
+    left: 0;
+    top: 0;
 }
-
 h2 {
-  display: inline-block;
+    display: inline-block;
 }
-
 input {
-  display: inline-block;
-  font-size: 20px;
-  border-radius: 10px;
-  box-shadow: 10px 10px 5px #888888;
-  width: 30%;
-  height: 50px;
-  padding-left: 20px;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px #888888;
+    width: 30%;
+    height: 50px;
+    padding-left: 20px;
 }
-
 button {
-  border-radius: 10px;
-  background: linear-gradient(#d39a1f, #e2c688);
-  padding: 15px;
-  box-shadow: 10px 10px 5px #888888;
-  font-weight: bold;
+    border-radius: 10px;
+    background: linear-gradient(#d39a1f, #e2c688);
+    background: -webkit-linear-gradient(#d39a1f, #e2c688);
+    background: -moz-linear-gradient(#d39a1f, #e2c688);
+    background: -ms-linear-gradient(#d39a1f, #e2c688);
+    padding: 15px;
+    box-shadow: 10px 10px 5px #888888;
+    font-weight: bold;
 }
-
 img {
-  margin: auto;
-  max-width: 150px;
-  max-height: 200px;
-  padding-left: 5px;
+    margin: auto;
+    max-width: 150px;
+    max-height: 200px;
+    padding-left: 5px;
 }
-
 /* class wrapper sets the parent div in a grid 10x2 */
+
 .wrapper {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  grid-gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
 }
-
 /* grid column and grid row help placing elements in the proper position */
+
 .choices {
-  text-align: center;
-  grid-column: 10;
-  grid-row: 2;
-  padding: 20px;
+    text-align: center;
+    grid-column: 10;
+    grid-row: 2;
+    padding: 20px;
 }
-
 /* div containing bet buttons etc */
+
 #moneyMaker {
-  text-align: center;
-  grid-column: 10;
-  grid-row: 1;
-  padding: 20px 0px;
-  border-radius: 10px;
-  background: linear-gradient(#d39a1f, #e2c688);
+    text-align: center;
+    grid-column: 10;
+    grid-row: 1;
+    padding: 20px 0px;
+    border-radius: 10px;
+    background: linear-gradient(#d39a1f, #e2c688);
+    background: -webkit-linear-gradient(#d39a1f, #e2c688);
+    background: -moz-linear-gradient(#d39a1f, #e2c688);
+    background: -ms-linear-gradient(#d39a1f, #e2c688);
 }
-
 /* dealer's card space */
+
 #dealer {
-  grid-column: 2/9;
-  grid-row: auto;
+    grid-column: 2/9;
+    grid-row: auto;
 }
-
 /* player's card space */
+
 #player {
-  grid-column: 2/9;
-  grid-row: auto;
+    grid-column: 2/9;
+    grid-row: auto;
 }
-
 /* div containing plus and minus buttons */
+
 #plusMinus {
-  padding: 20px;
+    padding: 20px;
 }
-
 #dealerName {
-  grid-column: 1;
-  grid-row: 1;
-  padding: 15px;
-  border-radius: 10px;
-  background: linear-gradient(#d39a1f, #e2c688);
+    grid-column: 1;
+    grid-row: 1;
+    padding: 15px;
+    border-radius: 10px;
+    background: linear-gradient(#d39a1f, #e2c688);
+    background: -webkit-linear-gradient(#d39a1f, #e2c688);
+    background: -moz-linear-gradient(#d39a1f, #e2c688);
+    background: -ms-linear-gradient(#d39a1f, #e2c688);
 }
-
 #playerName {
-  grid-column: 1;
-  grid-row: 2;
-  padding: 15px;
-  border-radius: 10px;
-  background: linear-gradient(#d39a1f, #e2c688);
+    grid-column: 1;
+    grid-row: 2;
+    padding: 15px;
+    border-radius: 10px;
+    background: linear-gradient(#d39a1f, #e2c688);
+    background: -webkit-linear-gradient(#d39a1f, #e2c688);
+    background: -moz-linear-gradient(#d39a1f, #e2c688);
+    background: -ms-linear-gradient(#d39a1f, #e2c688);
 }
-
 .container {
-  box-sizing: content-box;
-  height: 300px;
-  width: 100%;
-  padding: 15px;
+    box-sizing: content-box;
+    height: 300px;
+    width: 100%;
+    padding: 15px;
 }
-
 /* this 3 selectors style up the modal-box's background */
 /* I want different opacities for intro and ending modal boxes' background */
+
 #intro {
-  display: block;
-  position: fixed;
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.6);
+    display: block;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.6);
 }
-
 /* from now on styling up the modal boxes */
+
 #modalWelcome {
-  display: block;
-  position: fixed;
-  margin: auto;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  padding: 15px;
-  box-sizing: border-box;
+    display: block;
+    position: fixed;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    padding: 15px;
+    box-sizing: border-box;
 }
-
 #outMessage {
-  display: none;
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  padding: 15px;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.2);
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    padding: 15px;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.2);
 }
-
 #outM {
-  text-align: center;
-  border-radius: 10px;
-  background-color: #1c930a;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #1c930a;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
 }
-
 #welcome {
-  text-align: center;
-  border-radius: 10px;
-  background-color: #1c930a;
-  margin: 10% auto;
-  padding: 20px;
-  width: 80%;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #1c930a;
+    margin: 10% auto;
+    padding: 20px;
+    width: 80%;
 }
-
 #welcomeButton {
-  padding-top: 25px;
-  padding-bottom: 25px;
-  width: 60%;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    width: 60%;
 }
-
 #input {
-  padding: 10px;
+    padding: 10px;
 }
-
 /* start, plus buttons */
-#start, #plus {
-  width: 150px;
-  background: linear-gradient(#f44245, #f48341);
-}
 
+#start,
+#plus {
+    width: 150px;
+    background: linear-gradient(#f44245, #f48341);
+    background: -webkit-linear-gradient(#f44245, #f48341);
+    background: -moz-linear-gradient(#f44245, #f48341);
+    background: -ms-linear-gradient(#f44245, #f48341);
+}
 #minus {
- width: 150px;
-   background: linear-gradient(#12cc0c, #6ec124);
+    width: 150px;
+    background: linear-gradient(#12cc0c, #6ec124);
+    background: -webkit-linear-gradient(#12cc0c, #6ec124);
+    background: -moz-linear-gradient(#12cc0c, #6ec124);
+    background: -ms-linear-gradient(#12cc0c, #6ec124);
 }
-
 /* hit and stand buttons specific style */
-#hit, #stand, #doubleDown {
-  width: 150px;
+
+#hit,
+#stand,
+#doubleDown {
+    width: 150px;
 }
